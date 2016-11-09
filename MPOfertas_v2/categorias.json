@@ -1,0 +1,33 @@
+{
+    "results": [{
+                "id_categoria": "1",
+                "nome_categoria": "Casa e Construção",
+                "data_inclusao_categoria": "2016-09-14T00:50:57.000Z",
+                "icon": "news-icon.png"
+                }, {
+                "id_categoria": "2",
+                "nome_categoria": "Viagens",
+                "data_inclusao_categoria": "2016-09-14T00:51:19.000Z",
+                "icon": "caculator-icon.png"
+                }, {
+                "id_categoria": "3",
+                "nome_categoria": "Eletrônicos",
+                "data_inclusao_categoria": "2016-10-19T21:05:50.000Z",
+                "icon": "addressbook-icon.png"
+                }, {
+                "id_categoria": "4",
+                "nome_categoria": "Cosméticos",
+                "data_inclusao_categoria": "2016-10-27T19:12:01.000Z",
+                "icon": "news-icon.png"
+                }, {
+                "id_categoria": "7",
+                "nome_categoria": "Esportes",
+                "data_inclusao_categoria": "2016-10-27T20:15:51.000Z",
+                "icon": "caculator-icon.png"
+                }, {
+                "id_categoria": "17",
+                "nome_categoria": "Moda",
+                "data_inclusao_categoria": "2016-10-29T21:38:00.000Z",
+                "icon": "addressbook-icon.png"
+                }]
+}
