@@ -12,8 +12,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var btnSobre: UIButton!
     @IBOutlet weak var btnCadastro: UIButton!
-    
-    @IBOutlet weak var btnConhecaSites: UIButton!
+
     @IBOutlet weak var imageRodape: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +20,6 @@ class MenuViewController: UIViewController {
         // Altera contorno das imagens
         btnSobre.layer.cornerRadius = 10.0
         btnCadastro.layer.cornerRadius = 10.0
-        btnConhecaSites.layer.cornerRadius = 10.0
         imageRodape.layer.cornerRadius = 10.0
         
         // Do any additional setup after loading the view.

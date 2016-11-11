@@ -9,7 +9,7 @@
 import UIKit
 
 class ProdutosViewController : UIViewController, UITableViewDataSource, UITableViewDelegate{
-    
+
     @IBOutlet weak var imagemCampanha: UIImageView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,7 +21,40 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     
     var origem:String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ProdutosViewController.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+        Reach().monitorReachabilityChanges()
+        
+        
+        addImagemTabBar()
+        
+        getProdutos()
+        //getProdutosMock()
+        
+        
+//        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+//        edgePan.edges = .right
+//        
+//        view.addGestureRecognizer(edgePan)
+
+    }
+
+    
+//    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+//        if recognizer.state == .recognized {
+//            print("Screen edge swiped!")
+//            
+//            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "indiqueViewController") as? IndiqueViewController {
+//                if let navigator = navigationController {
+//                    navigator.pushViewController(viewController, animated: true)
+//                }
+//            }
+//        }
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {        
         //let navBar = self.navigationController?.navigationBar
 
        // navBar. BackgroundImage(uiImage, for: UIBarMetrics.default)
@@ -30,14 +63,16 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
             getProdutos()
         }
     
+        NotificationCenter.default.addObserver(self, selector: #selector(self.capturarNotificacoes), name: NSNotification.Name(rawValue: "minhasNotificacoes"), object: nil)
+        
     }
-    
- 
     
     func getProdutos() {
         //limpa a tabela
         produtos = [Produto]()
         tableView.reloadData()
+        
+        print("URL " + produtoURL + definirCategoria())
         
         // validar a conversão da String em URL
         guard let geoURL = URL(string: produtoURL + definirCategoria()) else {
@@ -131,7 +166,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 produto.isPreCampanha = jsonProduto["is_pre_campanha"] as! String
                 produto.isDestaque = jsonProduto["is_destaque"] as! String
                 
-                produto.textoCupom = jsonProduto["cupom"] as! String
+                produto.textoCupom = jsonProduto["texto_cupom"] as! String
                 
                 //link_imagem
                 //link_produto
@@ -151,13 +186,12 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     
     func definirCategoria() -> String {
         var retorno: String = ""
-        let infoLocais = InfoLocais()
-        let categorias = infoLocais.lerArray(chave: "categorias")
-        if categorias.count > 0 {
-            if categorias.count == 1{
-                retorno = "?p_categorias=" + categorias.joined()
+        let categorias = InfoLocais.lerArray(chave: "categorias")
+        if categorias != nil && (categorias?.count)! > 0 {
+            if categorias?.count == 1{
+                retorno = "?p_categorias=" + (categorias?.joined())!
             } else {
-                retorno = "?p_categorias=" + categorias.joined(separator: ",")
+                retorno = "?p_categorias=" + (categorias?.joined(separator: ","))!
             }
         }
         
@@ -204,36 +238,46 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         print(userInfo)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(ProdutosViewController.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
-        Reach().monitorReachabilityChanges()
-        
-        
-        addImagemTabBar()
-        
-        getProdutos()
-        //getProdutosMock()
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+
+    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return produtos.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170.0
+        if indexPath.row == 0 {
+            return 200
+        } else {
+            return 170.0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let produto = produtos[indexPath.row]
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as! HeaderCellProdutos
+            return cell
+        }
         
         if produto.isPreCampanha == "N" {
             if produto.isDestaque == "S"{
@@ -245,7 +289,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         
         return celulaNormal(produto: produto, indexPath: indexPath)
     }
-
+    
     func celulaNDestaque(produto:Produto, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellNDestaque", for: indexPath) as! NDestaqueTableViewCell
         
@@ -261,6 +305,8 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.labelPrecoFinal.text = "R$ " + produto.labelPrecoFinal.replacingOccurrences(of: ".", with: ",")
         
         //cell.viewProduto.layer.cornerRadius = 2.0
+        cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
+        cell.imagemProduto.downloadedFrom(link: produto.imagemProduto)
         
         cell.imagemLogoLoja.layer.cornerRadius = 10.0
         cell.imagemLogoLoja.layer.masksToBounds = true
@@ -327,10 +373,46 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.imagemProduto.layer.masksToBounds = true
         cell.imagemLogoLoja.layer.borderColor = UIColor.lightGray.cgColor
 
-        cell.viewProduto.layer.masksToBounds = true
-        cell.viewProduto.layer.cornerRadius = 10.0
+        //cell.viewProduto.layer.masksToBounds = true
+        //cell.viewProduto.layer.cornerRadius = 10.0
+        
+        cell.normalView.backgroundColor = UIColor.white
+        cell.normalView.layer.masksToBounds = false
+        cell.normalView.layer.cornerRadius = 3.0
+        cell.normalView.layer.shadowOffset = CGSize.zero
+        cell.normalView.layer.shadowOpacity = 0.5
         
         return cell
+    }
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func capturarNotificacoes(userInfo: NSNotification) {
+    
+        let pushCupom = userInfo.value(forKey: "userInfo") as! NSDictionary as! [String: NSObject]
+
+        if pushCupom["title"] as! String == "cupom" {
+            
+            let alertController = UIAlertController(title: "Parabéns!!!", message: "Você acabou de ganhar um cupom de desconto.", preferredStyle: .actionSheet)
+            let OKAction = UIAlertAction(title: "Fechar", style: .default) { (action:UIAlertAction!) in
+                
+                let tabArray = self.tabBarController?.tabBar.items as NSArray!
+                let tabItem = tabArray?.object(at: 2) as! UITabBarItem
+                tabItem.badgeValue = "!"
+                
+               // let meuCupom = self.storyboard?.instantiateViewController(withIdentifier: "meuCupomViewController")
+               // self.show(meuCupom!, sender: self)
+                
+                
+            }
+            
+            alertController.addAction(OKAction)
+            
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func celulaDestaque(produto:Produto, indexPath: IndexPath) -> UITableViewCell {
@@ -347,6 +429,9 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.labelPrecoInicial.text = "R$ " + String(produto.labelPrecoInicial).replacingOccurrences(of: ".", with: ",")
         cell.labelPrecoFinal.text = "R$ " + produto.labelPrecoFinal.replacingOccurrences(of: ".", with: ",")
 
+        cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
+        cell.imagemProduto.downloadedFrom(link: produto.imagemProduto)
+        
         cell.imagemLogoLoja.layer.masksToBounds = true
         cell.imagemLogoLoja.layer.cornerRadius = 10.0
         

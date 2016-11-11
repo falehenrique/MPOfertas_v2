@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E679A7B1DD503E8008C4CD7 /* HeaderCellProdutos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */; };
+		4E7BE3821DD3497D00F161F3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE37E1DD3497D00F161F3 /* Bolts.framework */; };
+		4E7BE3831DD3497D00F161F3 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE37F1DD3497D00F161F3 /* FBSDKCoreKit.framework */; };
+		4E7BE3841DD3497D00F161F3 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE3801DD3497D00F161F3 /* FBSDKLoginKit.framework */; };
+		4E7BE3851DD3497D00F161F3 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE3811DD3497D00F161F3 /* FBSDKShareKit.framework */; };
+		4E7BE3881DD356E700F161F3 /* Campanha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BE3871DD356E700F161F3 /* Campanha.swift */; };
+		4E7BE38A1DD3779D00F161F3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BE3891DD3779D00F161F3 /* Util.swift */; };
+		4E7BE38C1DD3E9C900F161F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E7BE38B1DD3E9C900F161F3 /* GoogleService-Info.plist */; };
+		4EC3DE501DCCEA390086051C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE4F1DCCEA390086051C /* AppDelegate.swift */; };
+		4EC3DE521DCCEA390086051C /* ProdutosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE511DCCEA390086051C /* ProdutosViewController.swift */; };
+		4EC3DE551DCCEA390086051C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3DE531DCCEA390086051C /* Main.storyboard */; };
+		4EC3DE571DCCEA390086051C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3DE561DCCEA390086051C /* Assets.xcassets */; };
+		4EC3DE5A1DCCEA390086051C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3DE581DCCEA390086051C /* LaunchScreen.storyboard */; };
+		4EC3DE681DCCED810086051C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE671DCCED810086051C /* MenuViewController.swift */; };
+		4EC3DE6A1DCD6D1E0086051C /* DestaqueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE691DCD6D1E0086051C /* DestaqueTableViewCell.swift */; };
+		4EC3DE6C1DCD6EDE0086051C /* Produto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE6B1DCD6EDE0086051C /* Produto.swift */; };
+		4EC3DE6E1DCE87A60086051C /* mock_produtos.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3DE6D1DCE87A60086051C /* mock_produtos.json */; };
+		4EC3DE711DCF93660086051C /* NDestaqueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE701DCF93660086051C /* NDestaqueTableViewCell.swift */; };
+		4EC3DE731DCF93760086051C /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE721DCF93760086051C /* NormalTableViewCell.swift */; };
+		4EC3DE751DD00A680086051C /* DetalheProdutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE741DD00A680086051C /* DetalheProdutoViewController.swift */; };
+		4EC3DE771DD00BA70086051C /* SobreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE761DD00BA70086051C /* SobreViewController.swift */; };
+		4EC3DE7A1DD0142E0086051C /* CategoriaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE791DD0142E0086051C /* CategoriaTableViewCell.swift */; };
+		4EC3DE7C1DD0143E0086051C /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE7B1DD0143E0086051C /* Categoria.swift */; };
+		4EC3DE7E1DD014DD0086051C /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE7D1DD014DD0086051C /* CategoriaTableViewController.swift */; };
+		4EC3DE811DD0F16E0086051C /* MeuCupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE801DD0F16E0086051C /* MeuCupomViewController.swift */; };
+		4EC3DE831DD0F2C60086051C /* IndiqueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE821DD0F2C60086051C /* IndiqueViewController.swift */; };
+		4EC3DEA61DD13F7B0086051C /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */; };
+		4EF430051DD24B430066E258 /* InfoLocais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF430041DD24B430066E258 /* InfoLocais.swift */; };
+		4EF430071DD294B20066E258 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF430061DD294B20066E258 /* Reach.swift */; };
+		9688320B20F3DDB253DC474E /* Pods_MPOfertas_v2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas_v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2.release.xcconfig"; sourceTree = "<group>"; };
+		4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellProdutos.swift; sourceTree = "<group>"; };
+		4E7BE37E1DD3497D00F161F3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4E7BE37F1DD3497D00F161F3 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		4E7BE3801DD3497D00F161F3 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		4E7BE3811DD3497D00F161F3 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		4E7BE3871DD356E700F161F3 /* Campanha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Campanha.swift; sourceTree = "<group>"; };
+		4E7BE3891DD3779D00F161F3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		4E7BE38B1DD3E9C900F161F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4EC3DE4C1DCCEA390086051C /* MPOfertas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPOfertas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EC3DE4F1DCCEA390086051C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4EC3DE511DCCEA390086051C /* ProdutosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutosViewController.swift; sourceTree = "<group>"; };
+		4EC3DE541DCCEA390086051C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4EC3DE561DCCEA390086051C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EC3DE591DCCEA390086051C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4EC3DE5B1DCCEA390086051C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EC3DE671DCCED810086051C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		4EC3DE691DCD6D1E0086051C /* DestaqueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestaqueTableViewCell.swift; sourceTree = "<group>"; };
+		4EC3DE6B1DCD6EDE0086051C /* Produto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Produto.swift; sourceTree = "<group>"; };
+		4EC3DE6D1DCE87A60086051C /* mock_produtos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_produtos.json; sourceTree = "<group>"; };
+		4EC3DE701DCF93660086051C /* NDestaqueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDestaqueTableViewCell.swift; sourceTree = "<group>"; };
+		4EC3DE721DCF93760086051C /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
+		4EC3DE741DD00A680086051C /* DetalheProdutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheProdutoViewController.swift; sourceTree = "<group>"; };
+		4EC3DE761DD00BA70086051C /* SobreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SobreViewController.swift; sourceTree = "<group>"; };
+		4EC3DE781DD012BC0086051C /* mock_categorias.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_categorias.json; sourceTree = "<group>"; };
+		4EC3DE791DD0142E0086051C /* CategoriaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewCell.swift; sourceTree = "<group>"; };
+		4EC3DE7B1DD0143E0086051C /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		4EC3DE7D1DD014DD0086051C /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
+		4EC3DE7F1DD01B0D0086051C /* categorias.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = categorias.json; sourceTree = "<group>"; };
+		4EC3DE801DD0F16E0086051C /* MeuCupomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeuCupomViewController.swift; sourceTree = "<group>"; };
+		4EC3DE821DD0F2C60086051C /* IndiqueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndiqueViewController.swift; sourceTree = "<group>"; };
+		4EC3DE841DD0F3FB0086051C /* MPOfertas_v2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPOfertas_v2.entitlements; sourceTree = "<group>"; };
+		4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
+		4EF430041DD24B430066E258 /* InfoLocais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLocais.swift; sourceTree = "<group>"; };
+		4EF430061DD294B20066E258 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPOfertas_v2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6B1A4427FD6F8484A21EB72 /* Pods-MPOfertas_v2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas_v2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EC3DE491DCCEA390086051C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E7BE3851DD3497D00F161F3 /* FBSDKShareKit.framework in Frameworks */,
+				4E7BE3821DD3497D00F161F3 /* Bolts.framework in Frameworks */,
+				4E7BE3831DD3497D00F161F3 /* FBSDKCoreKit.framework in Frameworks */,
+				4E7BE3841DD3497D00F161F3 /* FBSDKLoginKit.framework in Frameworks */,
+				9688320B20F3DDB253DC474E /* Pods_MPOfertas_v2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E7BE3861DD3498700F161F3 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4E7BE37E1DD3497D00F161F3 /* Bolts.framework */,
+				4E7BE37F1DD3497D00F161F3 /* FBSDKCoreKit.framework */,
+				4E7BE3801DD3497D00F161F3 /* FBSDKLoginKit.framework */,
+				4E7BE3811DD3497D00F161F3 /* FBSDKShareKit.framework */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		4EC3DE431DCCEA390086051C = {
+			isa = PBXGroup;
+			children = (
+				4EC3DE4E1DCCEA390086051C /* MPOfertas_v2 */,
+				4EC3DE4D1DCCEA390086051C /* Products */,
+				6F0AC30131C09A2E91D9EC7B /* Pods */,
+				8E558451F2E0D4F3F4D05161 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4EC3DE4D1DCCEA390086051C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EC3DE4C1DCCEA390086051C /* MPOfertas.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EC3DE4E1DCCEA390086051C /* MPOfertas_v2 */ = {
+			isa = PBXGroup;
+			children = (
+				4E7BE38B1DD3E9C900F161F3 /* GoogleService-Info.plist */,
+				4E7BE3861DD3498700F161F3 /* libs */,
+				4EF430081DD294BC0066E258 /* Util */,
+				4EC3DE841DD0F3FB0086051C /* MPOfertas_v2.entitlements */,
+				4EC3DE6F1DCF934B0086051C /* cell */,
+				4EC3DE631DCCEA920086051C /* service */,
+				4EC3DE621DCCEA8B0086051C /* model */,
+				4EC3DE611DCCEA760086051C /* controller */,
+				4EC3DE4F1DCCEA390086051C /* AppDelegate.swift */,
+				4EC3DE531DCCEA390086051C /* Main.storyboard */,
+				4EC3DE561DCCEA390086051C /* Assets.xcassets */,
+				4EC3DE581DCCEA390086051C /* LaunchScreen.storyboard */,
+				4EC3DE5B1DCCEA390086051C /* Info.plist */,
+				4EC3DE6D1DCE87A60086051C /* mock_produtos.json */,
+				4EC3DE781DD012BC0086051C /* mock_categorias.json */,
+				4EC3DE7F1DD01B0D0086051C /* categorias.json */,
+			);
+			path = MPOfertas_v2;
+			sourceTree = "<group>";
+		};
+		4EC3DE611DCCEA760086051C /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				4EC3DE511DCCEA390086051C /* ProdutosViewController.swift */,
+				4EC3DE671DCCED810086051C /* MenuViewController.swift */,
+				4EC3DE691DCD6D1E0086051C /* DestaqueTableViewCell.swift */,
+				4EC3DE741DD00A680086051C /* DetalheProdutoViewController.swift */,
+				4EC3DE761DD00BA70086051C /* SobreViewController.swift */,
+				4EC3DE7D1DD014DD0086051C /* CategoriaTableViewController.swift */,
+				4EC3DE801DD0F16E0086051C /* MeuCupomViewController.swift */,
+				4EC3DE821DD0F2C60086051C /* IndiqueViewController.swift */,
+				4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		4EC3DE621DCCEA8B0086051C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4EC3DE6B1DCD6EDE0086051C /* Produto.swift */,
+				4EC3DE7B1DD0143E0086051C /* Categoria.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		4EC3DE631DCCEA920086051C /* service */ = {
+			isa = PBXGroup;
+			children = (
+				4E7BE3871DD356E700F161F3 /* Campanha.swift */,
+			);
+			name = service;
+			sourceTree = "<group>";
+		};
+		4EC3DE6F1DCF934B0086051C /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				4EC3DE701DCF93660086051C /* NDestaqueTableViewCell.swift */,
+				4EC3DE721DCF93760086051C /* NormalTableViewCell.swift */,
+				4EC3DE791DD0142E0086051C /* CategoriaTableViewCell.swift */,
+				4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		4EF430081DD294BC0066E258 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4EF430061DD294B20066E258 /* Reach.swift */,
+				4E7BE3891DD3779D00F161F3 /* Util.swift */,
+				4EF430041DD24B430066E258 /* InfoLocais.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		6F0AC30131C09A2E91D9EC7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6B1A4427FD6F8484A21EB72 /* Pods-MPOfertas_v2.debug.xcconfig */,
+				09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E558451F2E0D4F3F4D05161 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EC3DE4B1DCCEA390086051C /* MPOfertas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EC3DE5E1DCCEA390086051C /* Build configuration list for PBXNativeTarget "MPOfertas" */;
+			buildPhases = (
+				E7512B500F419CD5CE28E4E6 /* [CP] Check Pods Manifest.lock */,
+				4EC3DE481DCCEA390086051C /* Sources */,
+				4EC3DE491DCCEA390086051C /* Frameworks */,
+				4EC3DE4A1DCCEA390086051C /* Resources */,
+				EB8D5F9EB4F859D3EDB3818A /* [CP] Embed Pods Frameworks */,
+				0D3688AB6A07B1E800345C62 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MPOfertas;
+			productName = MPOfertas_v2;
+			productReference = 4EC3DE4C1DCCEA390086051C /* MPOfertas.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EC3DE441DCCEA390086051C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Mercado Pago";
+				TargetAttributes = {
+					4EC3DE4B1DCCEA390086051C = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = EC85G4HG9F;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 4EC3DE471DCCEA390086051C /* Build configuration list for PBXProject "MPOfertas" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EC3DE431DCCEA390086051C;
+			productRefGroup = 4EC3DE4D1DCCEA390086051C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EC3DE4B1DCCEA390086051C /* MPOfertas */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EC3DE4A1DCCEA390086051C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EC3DE5A1DCCEA390086051C /* LaunchScreen.storyboard in Resources */,
+				4EC3DE571DCCEA390086051C /* Assets.xcassets in Resources */,
+				4E7BE38C1DD3E9C900F161F3 /* GoogleService-Info.plist in Resources */,
+				4EC3DE551DCCEA390086051C /* Main.storyboard in Resources */,
+				4EC3DE6E1DCE87A60086051C /* mock_produtos.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D3688AB6A07B1E800345C62 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7512B500F419CD5CE28E4E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB8D5F9EB4F859D3EDB3818A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EC3DE481DCCEA390086051C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E679A7B1DD503E8008C4CD7 /* HeaderCellProdutos.swift in Sources */,
+				4EC3DE751DD00A680086051C /* DetalheProdutoViewController.swift in Sources */,
+				4EC3DE7C1DD0143E0086051C /* Categoria.swift in Sources */,
+				4EF430051DD24B430066E258 /* InfoLocais.swift in Sources */,
+				4EC3DE711DCF93660086051C /* NDestaqueTableViewCell.swift in Sources */,
+				4EC3DE6C1DCD6EDE0086051C /* Produto.swift in Sources */,
+				4EC3DE521DCCEA390086051C /* ProdutosViewController.swift in Sources */,
+				4E7BE3881DD356E700F161F3 /* Campanha.swift in Sources */,
+				4EC3DE731DCF93760086051C /* NormalTableViewCell.swift in Sources */,
+				4EF430071DD294B20066E258 /* Reach.swift in Sources */,
+				4EC3DE831DD0F2C60086051C /* IndiqueViewController.swift in Sources */,
+				4EC3DE7A1DD0142E0086051C /* CategoriaTableViewCell.swift in Sources */,
+				4EC3DE7E1DD014DD0086051C /* CategoriaTableViewController.swift in Sources */,
+				4E7BE38A1DD3779D00F161F3 /* Util.swift in Sources */,
+				4EC3DE811DD0F16E0086051C /* MeuCupomViewController.swift in Sources */,
+				4EC3DE6A1DCD6D1E0086051C /* DestaqueTableViewCell.swift in Sources */,
+				4EC3DE771DD00BA70086051C /* SobreViewController.swift in Sources */,
+				4EC3DE681DCCED810086051C /* MenuViewController.swift in Sources */,
+				4EC3DEA61DD13F7B0086051C /* CadastroViewController.swift in Sources */,
+				4EC3DE501DCCEA390086051C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4EC3DE531DCCEA390086051C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EC3DE541DCCEA390086051C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4EC3DE581DCCEA390086051C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EC3DE591DCCEA390086051C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4EC3DE5C1DCCEA390086051C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4EC3DE5D1DCCEA390086051C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EC3DE5F1DCCEA390086051C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6B1A4427FD6F8484A21EB72 /* Pods-MPOfertas_v2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MPOfertas_v2/MPOfertas_v2.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EC85G4HG9F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MPOfertas_v2",
+				);
+				INFOPLIST_FILE = MPOfertas_v2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.mercadopago.MPOfertas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e0652089-afc3-4924-8ce0-457d14bab110";
+				PROVISIONING_PROFILE_SPECIFIER = "Development - MPOfertas";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4EC3DE601DCCEA390086051C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MPOfertas_v2/MPOfertas_v2.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = EC85G4HG9F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MPOfertas_v2",
+				);
+				INFOPLIST_FILE = MPOfertas_v2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.mercadopago.MPOfertas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2f53e8c2-cf0b-4414-a80d-dc1d2b33583d";
+				PROVISIONING_PROFILE_SPECIFIER = "Distribution - MPOfertas";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EC3DE471DCCEA390086051C /* Build configuration list for PBXProject "MPOfertas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EC3DE5C1DCCEA390086051C /* Debug */,
+				4EC3DE5D1DCCEA390086051C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EC3DE5E1DCCEA390086051C /* Build configuration list for PBXNativeTarget "MPOfertas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EC3DE5F1DCCEA390086051C /* Debug */,
+				4EC3DE601DCCEA390086051C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EC3DE441DCCEA390086051C /* Project object */;
+}

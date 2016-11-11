@@ -8,33 +8,31 @@
 
 import UIKit
 
+
 class CategoriaTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     //Endpoint
-    let geonamesURL = "https://api.mercadopago.com/v0/ofertas/app_categorias"
+    let categoriasAPIURL = "https://api.mercadopago.com/v0/ofertas/app_categorias"
 
     var selected = Array<String>()
     
     // Inicializar array de países
     var categorias = [Categoria]()
     
-    
-    
     func getCategorias() {
-        guard let geoURL = URL(string: geonamesURL) else {
+        guard let categoriaURL = URL(string: categoriasAPIURL) else {
             
             return
         }
         
-        let request = URLRequest(url: geoURL)
+        let request = URLRequest(url: categoriaURL)
 
         let urlSession = URLSession.shared
 
         let task = urlSession.dataTask(with: request, completionHandler : {(data, response, error) -> Void in
             
-            if let error = error {
-                print(error)
+            if error != nil{
                 return
             }
             
@@ -60,7 +58,7 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
             
             // parse json
-            let jsonCategorias = jsonResult?["resultsC"] as? [AnyObject]
+            let jsonCategorias = jsonResult?["resultsCategoria"] as? [AnyObject]
             
             for jsonCategoria in jsonCategorias! {
                 let categoria = Categoria()
@@ -96,7 +94,6 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
             cell!.accessoryType = .checkmark
             
             guard selected.contains(categorias[indexPath.row].id) else {
-                print("Adicionou categoria")
                 selected.append(categorias[indexPath.row].id)
                 return
             }
@@ -104,6 +101,7 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
 
     
     }
+
     
     func find(elements:Array<String>, toFind:String) -> Int? {
         
@@ -132,21 +130,20 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
 //    }
 
     override func viewDidAppear(_ animated: Bool) {
-        let infoLocais = InfoLocais()
-        selected = infoLocais.lerArray(chave: "categorias")
+        if let valoresSelecionados = InfoLocais.lerArray(chave: "categorias") {
+            selected = valoresSelecionados
+        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print(selected.count)
-        
+        InfoLocais.deletar(chave: "categorias")
+ 
         if (selected.count > 0)  && selected[0] == ""{
             selected.remove(at: 0)
         }
-        
-        let infoLocais = InfoLocais()
-        
-        infoLocais.deletar(chave: "categorias")
-        infoLocais.gravarArray(valor: selected, chave: "categorias")
+        InfoLocais.gravarArray(valor: selected, chave: "categorias")
+    
     }
     
     private func getCategoriasMock() {
@@ -166,7 +163,12 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //getProdutos()
+        /*if UserDefaults.standard.object(forKey: "categoriasLista") != nil {
+            categorias = UserDefaults.standard.object(forKey: "categoriasLista") as! [Categoria]
+        } else {
+            getCategorias()
+        }*/
+       
         getCategoriasMock()
     }
 
@@ -190,15 +192,13 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
 
         cell.labelDescricao.text = categoria.descricao
         cell.imagemIcone.image = UIImage(named: categoria.icone)
-        //cell.imagemIcone.downloadedFrom(link: categoria.icone)
-        
-        let infoLocais = InfoLocais()
-        let categoriasSelecionadas = infoLocais.lerArray(chave: "categorias")
-        print(categoriasSelecionadas)
-        
-        if categoriasSelecionadas.contains(categoria.id) {
-            print("Existe no array")
-            cell.accessoryType = .checkmark
+     
+        let categoriasSelecionadas = InfoLocais.lerArray(chave: "categorias")
+
+        if let categoriaArmazenadas = categoriasSelecionadas{
+            if categoriaArmazenadas.contains(categoria.id) {
+                cell.accessoryType = .checkmark
+            }
         }
     
         return cell

@@ -10,6 +10,7 @@ import UIKit
 
 class NormalTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var normalView: UIView!
     @IBOutlet weak var viewProduto: UIView!
     @IBOutlet weak var imagemLogoLoja: UIImageView!
     @IBOutlet weak var labelNomeProduto: UILabel!

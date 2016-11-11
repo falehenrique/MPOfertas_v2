@@ -9,21 +9,20 @@
 import Foundation
 
 
-class InfoLocais {
+class InfoLocais {    
+    static let userDefaults = UserDefaults.standard
     
-    let userDefaults = UserDefaults.standard
-    
-    func gravarString(valor:String, chave:String) {
+    static func gravarString(valor:String, chave:String) {
         userDefaults.set(valor, forKey: chave)
         userDefaults.synchronize()
     
     }
 
-    func deletar(chave:String) {
+    static func deletar(chave:String) {
         userDefaults.removeObject(forKey: chave)
     }
     
-    func lerString(chave:String) -> String {
+    static func lerString(chave:String) -> String {
         
         if let retorno = userDefaults.object(forKey: chave) {
             return retorno as! String
@@ -33,19 +32,24 @@ class InfoLocais {
         
     }
     
-    func gravarArray(valor:[String], chave:String) {
+    static func gravarArray(valor:[String], chave:String) {
         userDefaults.set(valor, forKey: chave)
         userDefaults.synchronize()
         
     }
     
-    func lerArray(chave:String) -> [String] {
+    static func gravarArray(valor:NSMutableArray, chave:String) {
+        userDefaults.set(valor, forKey: chave)
+        userDefaults.synchronize()
+        
+    }
+    static func lerArray(chave:String) -> [String]? {
         
         if let retorno = userDefaults.object(forKey: chave) {
-            return retorno as! [String]
+            return retorno as? [String]
         }
         
-        return [""]
+        return nil
         
     }
     
