@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E679A7B1DD503E8008C4CD7 /* HeaderCellProdutos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */; };
+		4E679AC91DD66820008C4CD7 /* TermosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E679AC81DD66820008C4CD7 /* TermosViewController.swift */; };
 		4E7BE3821DD3497D00F161F3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE37E1DD3497D00F161F3 /* Bolts.framework */; };
 		4E7BE3831DD3497D00F161F3 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE37F1DD3497D00F161F3 /* FBSDKCoreKit.framework */; };
 		4E7BE3841DD3497D00F161F3 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7BE3801DD3497D00F161F3 /* FBSDKLoginKit.framework */; };
@@ -15,6 +16,7 @@
 		4E7BE3881DD356E700F161F3 /* Campanha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BE3871DD356E700F161F3 /* Campanha.swift */; };
 		4E7BE38A1DD3779D00F161F3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BE3891DD3779D00F161F3 /* Util.swift */; };
 		4E7BE38C1DD3E9C900F161F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E7BE38B1DD3E9C900F161F3 /* GoogleService-Info.plist */; };
+		4EA748AE1DD9698600529F85 /* TesteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA748AD1DD9698600529F85 /* TesteViewController.swift */; };
 		4EC3DE501DCCEA390086051C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE4F1DCCEA390086051C /* AppDelegate.swift */; };
 		4EC3DE521DCCEA390086051C /* ProdutosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DE511DCCEA390086051C /* ProdutosViewController.swift */; };
 		4EC3DE551DCCEA390086051C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3DE531DCCEA390086051C /* Main.storyboard */; };
@@ -42,6 +44,7 @@
 /* Begin PBXFileReference section */
 		09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas_v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2.release.xcconfig"; sourceTree = "<group>"; };
 		4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellProdutos.swift; sourceTree = "<group>"; };
+		4E679AC81DD66820008C4CD7 /* TermosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermosViewController.swift; sourceTree = "<group>"; };
 		4E7BE37E1DD3497D00F161F3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4E7BE37F1DD3497D00F161F3 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4E7BE3801DD3497D00F161F3 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		4E7BE3871DD356E700F161F3 /* Campanha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Campanha.swift; sourceTree = "<group>"; };
 		4E7BE3891DD3779D00F161F3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4E7BE38B1DD3E9C900F161F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4EA748AD1DD9698600529F85 /* TesteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesteViewController.swift; sourceTree = "<group>"; };
 		4EC3DE4C1DCCEA390086051C /* MPOfertas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPOfertas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC3DE4F1DCCEA390086051C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EC3DE511DCCEA390086051C /* ProdutosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutosViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				4EC3DE801DD0F16E0086051C /* MeuCupomViewController.swift */,
 				4EC3DE821DD0F2C60086051C /* IndiqueViewController.swift */,
 				4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */,
+				4E679AC81DD66820008C4CD7 /* TermosViewController.swift */,
+				4EA748AD1DD9698600529F85 /* TesteViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -352,12 +358,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA748AE1DD9698600529F85 /* TesteViewController.swift in Sources */,
 				4E679A7B1DD503E8008C4CD7 /* HeaderCellProdutos.swift in Sources */,
 				4EC3DE751DD00A680086051C /* DetalheProdutoViewController.swift in Sources */,
 				4EC3DE7C1DD0143E0086051C /* Categoria.swift in Sources */,
 				4EF430051DD24B430066E258 /* InfoLocais.swift in Sources */,
 				4EC3DE711DCF93660086051C /* NDestaqueTableViewCell.swift in Sources */,
 				4EC3DE6C1DCD6EDE0086051C /* Produto.swift in Sources */,
+				4E679AC91DD66820008C4CD7 /* TermosViewController.swift in Sources */,
 				4EC3DE521DCCEA390086051C /* ProdutosViewController.swift in Sources */,
 				4E7BE3881DD356E700F161F3 /* Campanha.swift in Sources */,
 				4EC3DE731DCF93760086051C /* NormalTableViewCell.swift in Sources */,
@@ -505,8 +513,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.mercadopago.MPOfertas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e0652089-afc3-4924-8ce0-457d14bab110";
-				PROVISIONING_PROFILE_SPECIFIER = "Development - MPOfertas";
+				PROVISIONING_PROFILE = "692b38c5-2153-4326-b518-2f2bccfc2fac";
+				PROVISIONING_PROFILE_SPECIFIER = "Development 2";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

@@ -15,6 +15,8 @@ class SobreViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView: UIWebView!
     
+    @IBOutlet weak var aguarde: UILabel!
+    @IBOutlet weak var carregando: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAdressURL()
@@ -31,11 +33,13 @@ class SobreViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        //SwiftSpinner.show(delay: 0.5, title: "Aguarde...", animated: true)
+        carregando.startAnimating()
+        aguarde.isHidden = false
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        //SwiftSpinner.hide()
+        carregando.stopAnimating()
+        aguarde.isHidden = true
     }
     
     func loadAdressURL() {

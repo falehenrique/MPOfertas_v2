@@ -10,6 +10,8 @@ import UIKit
 
 class ProdutosViewController : UIViewController, UITableViewDataSource, UITableViewDelegate{
 
+    @IBOutlet weak var aguarde: UILabel!
+    @IBOutlet weak var carregando: UIActivityIndicatorView!
     @IBOutlet weak var imagemCampanha: UIImageView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -18,8 +20,6 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     
     // Inicializar array de países
     var produtos = [Produto]()
-    
-    var origem:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,35 +31,11 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         addImagemTabBar()
         
         getProdutos()
-        //getProdutosMock()
         
-        
-//        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-//        edgePan.edges = .right
-//        
-//        view.addGestureRecognizer(edgePan)
-
     }
 
-    
-//    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-//        if recognizer.state == .recognized {
-//            print("Screen edge swiped!")
-//            
-//            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "indiqueViewController") as? IndiqueViewController {
-//                if let navigator = navigationController {
-//                    navigator.pushViewController(viewController, animated: true)
-//                }
-//            }
-//        }
-//    }
-    
-    override func viewDidAppear(_ animated: Bool) {        
-        //let navBar = self.navigationController?.navigationBar
-
-       // navBar. BackgroundImage(uiImage, for: UIBarMetrics.default)
-
-        if origem == "categorias" {
+    override func viewDidAppear(_ animated: Bool) {
+        if InfoLocais.lerString(chave: "origem") == "categorias" {
             getProdutos()
         }
     
@@ -67,7 +43,16 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    func pararCarregando() {
+        self.carregando.stopAnimating()
+        self.aguarde.isHidden = true
+    }
+    
     func getProdutos() {
+        
+        carregando.startAnimating()
+        aguarde.isHidden = false
+        
         //limpa a tabela
         produtos = [Produto]()
         tableView.reloadData()
@@ -106,6 +91,8 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
                 
+                self.pararCarregando()
+                
                 return
             }
             
@@ -120,6 +107,9 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 let alertController = UIAlertController.init(title: "Informação", message: "Não foi possível carregar a lista de produtos", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
+                
+                self.pararCarregando()
+                
             }
         })
         
@@ -130,7 +120,9 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "segueProduto", sender: self)
+        if indexPath.row != 0 {
+            self.performSegue(withIdentifier: "segueProduto", sender: self)
+        }
     }
 
     
@@ -146,6 +138,8 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 let alertController = UIAlertController.init(title: "Informação", message: "Nenhum registro encontrado.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
+                self.pararCarregando()
+                
                 return
             }
             
@@ -181,6 +175,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             print(error)
+            self.pararCarregando()
         }
     }
     
@@ -194,8 +189,6 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 retorno = "?p_categorias=" + (categorias?.joined(separator: ","))!
             }
         }
-        
-        print("categorias====" + retorno)
         
         return retorno
         
@@ -217,18 +210,31 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     }
     
     func addImagemTabBar(){
+ 
         let uiImage = UIImage(named: "black_friday_promos")
         
         let imageView = UIImageView(image: uiImage)
         imageView.contentMode  = UIViewContentMode.scaleAspectFit
         
+        
+        /*imageView.contentMode  = UIViewContentMode.scaleAspectFit
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let dicionarioElementos: Dictionary = ["imageView": imageView]
         
-        let view1ConstraintV: Array = NSLayoutConstraint.constraints(withVisualFormat: "V:[imageView(25)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
+        let view1ContraintH: Array = NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
         
-        imageView.addConstraints(view1ConstraintV)
+        let view1ContraintV: Array = NSLayoutConstraint.constraints(withVisualFormat: "V:[imageView(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
+        
+       // let elementoPosicaoV = NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[imageView]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
+        
+        imageView.addConstraints(view1ContraintH)
+        imageView.addConstraints(view1ContraintV)*/
+        //imageView.addConstraints(elementoPosicaoV)
+        
+
+         imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute:.width, multiplier: 2.0, constant:150.0))
         
         self.navigationItem.titleView = imageView
     }
@@ -264,10 +270,46 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
         if indexPath.row == 0 {
-            return 200
+            let alturaTela = self.view.frame.size.height
+            let pontos = calculaPontos(alturaTela)
+            
+            switch pontos {
+            case 5:
+                 return 155
+            case 6:
+                 return 170
+            case 7:
+                 return 175
+            default:
+                return 155
+            }
         } else {
             return 170.0
+        }
+    }
+    
+    /* Calcula o número de pontos que a tela deve subir quando aparecer o teclado
+     O número calculado dependerá do tamanho do dispositivo
+     iPhone 4/4s -       480.0 pontos de altura
+     iPhone 5C   -       548.0 pontos de altura
+     iPhone 5/5S -       568.0 pontos de altura
+     iPhone 6/6S -       667.0 pontos de altura
+     iPhone 6/6s Plus -  736.0 pontos de altura
+     iPad (todos) -      1024.0 pontos de altura
+     */
+    func calculaPontos(_ tamanhoTela: CGFloat) -> Int {
+        switch tamanhoTela {
+        case 548.0...568.0:
+            return 5
+        case 600.0...720:
+            return 6
+        case 736.0...1024.0:
+            return 7
+        default:
+            return 0
         }
     }
     
@@ -285,6 +327,10 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
             } else {
                 return celulaNDestaque(produto: produto, indexPath: indexPath)
             }
+        }
+        
+        if indexPath.row == (tableView.indexPathsForVisibleRows?.last)?.row {
+            pararCarregando()
         }
         
         return celulaNormal(produto: produto, indexPath: indexPath)
@@ -372,9 +418,6 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.imagemProduto.layer.cornerRadius = 10.0
         cell.imagemProduto.layer.masksToBounds = true
         cell.imagemLogoLoja.layer.borderColor = UIColor.lightGray.cgColor
-
-        //cell.viewProduto.layer.masksToBounds = true
-        //cell.viewProduto.layer.cornerRadius = 10.0
         
         cell.normalView.backgroundColor = UIColor.white
         cell.normalView.layer.masksToBounds = false
@@ -402,11 +445,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 let tabArray = self.tabBarController?.tabBar.items as NSArray!
                 let tabItem = tabArray?.object(at: 2) as! UITabBarItem
                 tabItem.badgeValue = "!"
-                
-               // let meuCupom = self.storyboard?.instantiateViewController(withIdentifier: "meuCupomViewController")
-               // self.show(meuCupom!, sender: self)
-                
-                
+            
             }
             
             alertController.addAction(OKAction)
@@ -450,20 +489,23 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueProduto" {
+            
             if let indexPath = self.tableView.indexPathForSelectedRow {
+                
+                
                 let link_produto = produtos[indexPath.row].linkImagem
-                
+                    
                 let controller = segue.destination as! DetalheProdutoViewController
-
+                    
                 controller.urlProduto = link_produto as String?
-//                
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-//                controller.navigationItem.leftItemsSupplementBackButton = true
+                    
+                InfoLocais.gravarString(valor: "detalheProduto", chave: "origem")
+               
                 
-                origem = "detalheProduto"
             }
         } else if segue.identifier == "segueCategorias" {
-            origem = "categorias"
+
+            InfoLocais.gravarString(valor: "categorias", chave: "origem")
         }
     }
 

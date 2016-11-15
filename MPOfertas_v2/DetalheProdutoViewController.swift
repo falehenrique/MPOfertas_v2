@@ -13,6 +13,8 @@ class DetalheProdutoViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView!
     
+    @IBOutlet weak var labelAguarde: UILabel!
+    @IBOutlet weak var indicatorWebView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -23,6 +25,8 @@ class DetalheProdutoViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+
+    
     @IBAction func voltarProdutos(_ sender: AnyObject) {
         let viewProdutos = self.storyboard?.instantiateViewController(withIdentifier: "viewProdutos")
         self.show(viewProdutos!, sender: self)
@@ -35,15 +39,18 @@ class DetalheProdutoViewController: UIViewController, UIWebViewDelegate {
         
     }
     func webViewDidStartLoad(_ webView: UIWebView) {
-        //SwiftSpinner.show(delay: 0.5, title: "Carregando produto.", animated: true)
+        labelAguarde.isHidden = false
+        indicatorWebView.startAnimating()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        //SwiftSpinner.hide()
+        labelAguarde.isHidden = true
+        indicatorWebView.stopAnimating()
     }
     
     func configureView() {
         
+        print("URL Produto " + urlProduto!)
         let requestURL = URL(string: self.urlProduto!)
         if let urlTeste = requestURL {
             let request = URLRequest(url: urlTeste)

@@ -142,8 +142,7 @@ class CategoriaTableViewController: UIViewController, UITableViewDataSource, UIT
         if (selected.count > 0)  && selected[0] == ""{
             selected.remove(at: 0)
         }
-        InfoLocais.gravarArray(valor: selected, chave: "categorias")
-    
+        InfoLocais.gravarArray(valor: selected, chave: "categorias")    
     }
     
     private func getCategoriasMock() {

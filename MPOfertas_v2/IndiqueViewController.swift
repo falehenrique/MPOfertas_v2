@@ -13,7 +13,8 @@ import FBSDKLoginKit
 import FirebaseInstanceID
 
 
-class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate  {
+@available(iOS 10.0, *)
+class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     let urlAPICampanha = "https://api.mercadopago.com/v0/mgm/tracking/user"
     
@@ -22,7 +23,8 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     var isViewUp: Bool = false
     
     var buttonFacebook: FBSDKLoginButton = FBSDKLoginButton()
-    
+
+    @IBOutlet weak var textoInformativo: UITextView!
     @IBOutlet weak var btnFacebook: UIButton!
     @IBOutlet weak var txtCodigoAtivacao: UITextField!
     @IBOutlet weak var btnAtivar: UIButton!
@@ -31,31 +33,46 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         buttonFacebook.delegate = self
         buttonFacebook.readPermissions = ["public_profile","email","user_friends"]
         
         btnAtivar.layer.cornerRadius = 10.0
+        
+        labelCodigoCompartilhamento.layer.masksToBounds = false
         labelCodigoCompartilhamento.layer.cornerRadius = 10.0
+        
         txtCodigoAtivacao.layer.cornerRadius = 10.0
         btnCompartilhar.layer.cornerRadius = 10.0
+        
+        
+        btnCompartilhar.layer.masksToBounds = false
+        btnCompartilhar.layer.cornerRadius = 3.0
+        btnCompartilhar.layer.shadowOffset = CGSize.zero
+        btnCompartilhar.layer.shadowOpacity = 0.5
 
+        btnAtivar.layer.masksToBounds = false
+        btnAtivar.layer.cornerRadius = 3.0
+        btnAtivar.layer.shadowOffset = CGSize.zero
+        btnAtivar.layer.shadowOpacity = 0.5
+        
         // Cria notificações para subida/descida da tela
         NotificationCenter.default.addObserver(self, selector: #selector(IndiqueViewController.tecladoUp(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(IndiqueViewController.tecladoDown(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
+        
+        tratarTextoInformativo()
         // Do any additional setup after loading the view.
     }
 
-    // MARK: - Delegates - Eventos, mensagens e notificações enviados pelos elementos da tela
-    // MARK: - Delegates
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
-    }
+        let vd = self.storyboard?.instantiateViewController(withIdentifier: "regras")
+        
+        self.show(vd!, sender: self)
 
+        return true
+    }
+    
     // Força saída do teclado ao tocar em qualquer lugar da tela
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -86,6 +103,30 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             isViewUp = false
         }
     }
+    
+    /* Calcula o número de pontos que a tela deve subir quando aparecer o teclado
+     O número calculado dependerá do tamanho do dispositivo
+     iPhone 4/4s -       480.0 pontos de altura
+     iPhone 5C   -       548.0 pontos de altura
+     iPhone 5/5S -       568.0 pontos de altura
+     iPhone 6/6S -       667.0 pontos de altura
+     iPhone 6/6s Plus -  736.0 pontos de altura
+     iPad (todos) -      1024.0 pontos de altura
+     */
+    func calculaPontos(_ tamanhoTela: CGFloat) -> Int {
+        switch tamanhoTela {
+        case 480.0...519.0:
+            return 210
+        case 548.0...568.0:
+            return 150
+        case 667.0:
+            return 100
+        case 736.0...1024.0:
+            return 0
+        default:
+            return 0
+        }
+    }
 
     @IBAction func shareSocial(_ sender: AnyObject) {
         
@@ -97,7 +138,10 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             return
         }
         
-        let mensagemCompartilhamento = "Olá! Estou participando da campanha de Black Friday do Mercado Pago.\n Baixe o app, use meu código promocional e me ajude a economizar durante Black Friday :) Meu código é:"+labelCodigoCompartilhamento.text!+"Você também receberá um código promocional e poderá ganhar até R$120 de desconto. \n Para baixar o aplicativo e receber descontos, acesse: \n https://play.google.com/store/apps/details?id=com.mercadopago.mpofertas \n Obrigado!"
+        var mensagemCompartilhamento = "Olá! " +
+            "Estou participando da campanha de Black Friday do Mercado Pago.\n"
+            mensagemCompartilhamento.append("Baixe o app, use meu código promocional e me ajude a economizar durante Black Friday :) Meu código é: "+labelCodigoCompartilhamento.text!+".\n"+" Você também receberá um código promocional e poderá ganhar até R$120 de desconto. \n" +
+                "Para baixar o aplicativo e receber descontos, acesse: \n https://itunes.apple.com/us/app/mercado-pago-black-friday/id1174697243?l=pt&ls=1&mt=8 \n Obrigado!")
         
 
         let objectsToShare = [mensagemCompartilhamento]
@@ -114,18 +158,17 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        InfoLocais.deletar(chave: "origem")        
 
         //limpa campos
         txtCodigoAtivacao.text = ""
         labelCodigoCompartilhamento.text = ""
 
-        verificaLogin()
-        definirBotaoAtivado()
+        verificaLogin("")
     }
     
     func getTokenPush() -> String {
         if let tokenPush = FIRInstanceID.instanceID().token() {
-            print("MEU TOKEN \(tokenPush)")
             return tokenPush
         }
         
@@ -134,10 +177,8 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     }
     
     func isLogin() -> Bool{
-        
-        let userFacebook = InfoLocais.lerString(chave: "UserFacebook")
-        
-        if FBSDKAccessToken.current() != nil && userFacebook.characters.count > 0 {
+    
+        if FBSDKAccessToken.current() != nil {
             return true
         }
         
@@ -160,20 +201,19 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         }
     }
     
-    func verificaLogin (){
+    func verificaLogin (_ text: String){
     
         if isLogin() {
             btnFacebook.isHidden = true
             labelInformativo.isHidden = true
 
-            
             btnAtivar.isEnabled = true
             btnCompartilhar.isEnabled = true
             txtCodigoAtivacao.isEnabled = true
             
-            
             recuperarCodigoCampanha()
             
+            definirBotaoAtivado("")
         } else {
             btnFacebook.isHidden = false
             labelInformativo.isHidden = false
@@ -181,6 +221,11 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             btnAtivar.isEnabled = false
             btnCompartilhar.isEnabled = false
             txtCodigoAtivacao.isEnabled = false
+            
+            let alertController = UIAlertController.init(title: "Atenção", message: "Faça o login para obter seu código promocional.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            
         }
         
     }
@@ -209,7 +254,8 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                         UserDefaults.standard.set(userID, forKey: "UserID")
                     }
                     
-                    self.verificaLogin ()
+                    // Atualizar a interface                    
+                    self.performSelector(onMainThread: #selector(self.verificaLogin(_:)), with: nil, waitUntilDone: false)
                     
                 }  else {
                     print("Error \(error)")
@@ -277,16 +323,18 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         var request = URLRequest(url: postURL)
         let urlSession = URLSession.shared
         
-        print("TOKEN PUSH == = " + getTokenPush())
-        
         //InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
         
         // No caso do POST, iremos definir alguns parâmetros
-        let postParams: [String: AnyObject] = ["email": "teste@gmail.com" as AnyObject,
+        let postParams: [String: AnyObject] = ["email": InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
                                                "firebaseID": getTokenPush() as AnyObject,
                                                "friendCode": friendCode as AnyObject,
                                                "promotion" : 26 as AnyObject,]
-        
+//        print(postParams)
+//        
+//        print(getTokenPush())
+//        print(InfoLocais.lerString(chave: "UserFacebook"))
+//        print(friendCode)
         
         // Mais alguns parâmetros de configuração
         request.httpMethod = "POST"
@@ -320,12 +368,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                 }
                 return
             }
-            
-            // Ler o JSON de resposta
-            //if let postString = String(data: data!, encoding: String.Encoding.utf8) {
-                //let retornoAPI = Util.convertStringToDictionary(text: postString)
-                //(retornoAPI!["message"]!) 
-                
+
             // Atualizar a interface
             let alertController = UIAlertController.init(title: "Parabéns!", message: "Seu código foi ativado com sucesso.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
@@ -333,9 +376,8 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                 
             InfoLocais.gravarString(valor: friendCode, chave: "codigoAtivado")
             
-            self.definirBotaoAtivado()
-                
-            //}
+            // Atualizar a interface
+            self.performSelector(onMainThread: #selector(self.definirBotaoAtivado(_:)), with: friendCode, waitUntilDone: false)
             
         }
         // Executar o comando
@@ -343,7 +385,57 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         
     }
     
-    private func definirBotaoAtivado() {
+    func tratarTextoInformativo() {
+        
+        let attributedString = NSMutableAttributedString(
+            string: "Compartilhe este código promocional com seus amigos. Quanto mais amigos baixarem o app e ativarem o código, mais desconto você ganha para usar na Black Friday. Regras",
+            attributes: [NSFontAttributeName:UIFont(
+                name: "Helvetica",
+                size: 15.0)!,
+                         NSForegroundColorAttributeName:UIColor.white
+                         
+            ])
+
+        attributedString.addAttribute(NSFontAttributeName,
+                                           value: UIFont(
+                                            name: "Helvetica-Bold",
+                                            size: 15.0)!,
+                                           range: NSRange(
+                                            location: 0,
+                                            length: 36 ))
+        
+        attributedString.addAttribute(NSFontAttributeName,
+                                      value: UIFont(
+                                        name: "Helvetica-Bold",
+                                        size: 15.0)!,
+                                      range: NSRange(
+                                        location: 146,
+                                        length: 13 ))
+
+        attributedString.addAttribute(NSFontAttributeName,
+                                      value: UIFont(
+                                        name: "Helvetica-Bold",
+                                        size: 15.0)!,
+                                      range: NSRange(
+                                        location: 160,
+                                        length: 6 ))
+
+        attributedString.addAttribute(NSUnderlineStyleAttributeName,
+                                      value: NSUnderlineStyle.styleSingle.rawValue,
+                                      range: NSRange(
+                                        location: 160,
+                                        length: 6 ))
+        
+        attributedString.addAttribute(NSLinkAttributeName, value: "#regras", range: NSRange(location: 160, length: 6))
+        
+        textoInformativo.attributedText = attributedString
+        
+        //textoInformativo.linkTextAttributes = [NSLinkAttributeName :"#regras"]
+        
+        
+    }
+    
+    public func definirBotaoAtivado(_ text: String) {
         if InfoLocais.lerString(chave: "codigoAtivado") != nil && InfoLocais.lerString(chave: "codigoAtivado") .characters.count > 0 {
             btnAtivar.setTitle("Ativado", for: .normal)
             btnAtivar.isEnabled = false
@@ -372,7 +464,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         let urlSession = URLSession.shared
         
         // No caso do POST, iremos definir alguns parâmetros
-        let postParams: [String: AnyObject] = ["email": "teste@gmail.com" as AnyObject,
+        let postParams: [String: AnyObject] = ["email": InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
                                                "firebaseID": getTokenPush() as AnyObject,
                                                "friendCode": "" as AnyObject,
                                                "promotion" : 26 as AnyObject,]
@@ -383,10 +475,6 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: JSONSerialization.WritingOptions())
-            
-            print(request.httpBody?.description)
-            print(request.httpBody!)
-            
         } catch {
             mensagemAlerta("erro", "")
         }
@@ -422,7 +510,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                 
                 // Atualizar a interface
                 self.performSelector(onMainThread: #selector(self.atualizarLabelCodigo(_:)), with: postString, waitUntilDone: false)
-                
+
             }
             
         }
@@ -430,7 +518,6 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         task.resume()
         
     }
-
 
     func mensagemAlerta(_ tipo:String, _ mensagem:String){
         
@@ -462,31 +549,4 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         }
         
     }
-    // MARK: - Funções de Apoio
-    
-    /* Calcula o número de pontos que a tela deve subir quando aparecer o teclado
-     O número calculado dependerá do tamanho do dispositivo
-     iPhone 4/4s -       480.0 pontos de altura
-     iPhone 5C   -       548.0 pontos de altura
-     iPhone 5/5S -       568.0 pontos de altura
-     iPhone 6/6S -       667.0 pontos de altura
-     iPhone 6/6s Plus -  736.0 pontos de altura
-     iPad (todos) -      1024.0 pontos de altura
-     */
-    func calculaPontos(_ tamanhoTela: CGFloat) -> Int {
-        switch tamanhoTela {
-        case 480.0:
-            return 210
-        case 548.0...568.0:
-            return 150
-        case 667.0:
-            return 100
-        case 736.0...1024.0:
-            return 0
-        default:
-            return 0
-        }
-    }
-    
-    
 }

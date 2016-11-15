@@ -11,7 +11,9 @@ import UIKit
 
 class CadastroViewController: UIViewController, UIWebViewDelegate {
     
+    @IBOutlet weak var aguarde: UILabel!
     @IBOutlet var webView: UIWebView!
+    @IBOutlet weak var carregando: UIActivityIndicatorView!
     
     var URLPath = "https://registration.mercadopago.com.br/registration-mp?mode=mp"
     
@@ -31,11 +33,15 @@ class CadastroViewController: UIViewController, UIWebViewDelegate {
         dismiss(animated: true, completion: nil)
     }
     func webViewDidStartLoad(_ webView: UIWebView) {
-       // SwiftSpinner.show(delay: 0.5, title: "Aguarde...", animated: true)
+        carregando.startAnimating()
+        
+        aguarde.isHidden = false
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        //SwiftSpinner.hide()
+        carregando.stopAnimating()
+        
+             aguarde.isHidden = true
     }
     
     func loadAdressURL() {

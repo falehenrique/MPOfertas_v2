@@ -73,11 +73,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "getProdutosMock()"
             landmarkType = "7">
          </BreakpointContent>
@@ -89,12 +89,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "tableView(_:heightForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "parseJsonData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -231,7 +231,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/CategoriaTableViewController.swift"
-            timestampString = "500561555.518209"
+            timestampString = "500841487.902914"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "getCategoriasMock()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MPOfertas_v2/CategoriaTableViewController.swift"
+            timestampString = "500841487.902914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -246,28 +262,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/CategoriaTableViewController.swift"
-            timestampString = "500561555.518209"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "getCategoriasMock()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/DetalheProdutoViewController.swift"
-            timestampString = "500351558.437583"
+            timestampString = "500755632.757625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "DetalheProdutoViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -279,11 +279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/DetalheProdutoViewController.swift"
-            timestampString = "500351558.437583"
+            timestampString = "500755632.757625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "configureView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -311,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -327,11 +327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/DetalheProdutoViewController.swift"
-            timestampString = "500351558.437583"
+            timestampString = "500755632.757625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "voltarProdutos(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -343,11 +343,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "formatarCupom(textoCupom:cupom:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -407,11 +407,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "getProdutos()"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,7 +423,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -455,39 +455,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "parseJsonData(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "getProdutos()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -503,12 +471,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "viewDidAppear(_:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getProdutos()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -519,12 +487,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/ProdutosViewController.swift"
-            timestampString = "500526397.304046"
+            timestampString = "500849017.127043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "parseJsonData(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MPOfertas_v2/ProdutosViewController.swift"
+            timestampString = "500849017.127043"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -535,28 +519,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500436536.819131"
+            timestampString = "500866945.253094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "IndiqueViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "isLogin()"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "atualizarLabelCodigo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -567,12 +535,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500866945.253094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "verificaLogin()"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "verificaLogin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -583,11 +551,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -599,12 +567,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
-            landmarkName = "recuperarCodigoCampanhaAPI()"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
+            landmarkName = "mensagemAlerta(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -615,11 +583,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
             <Locations>
@@ -663,11 +631,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
             <Locations>
@@ -711,11 +679,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -727,11 +695,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -743,11 +711,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -759,11 +727,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -775,11 +743,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -791,11 +759,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
             <Locations>
@@ -839,11 +807,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -871,11 +839,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563566.681731"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "recuperarCodigoCampanhaAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -887,12 +855,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500866945.253094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "atualizarLabelCodigo(_:)"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "verificaLogin(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -935,43 +903,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500866945.253094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "recuperarCodigoCampanha()"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "ativarCodigo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "ativarCodigoCampanhaAPI(friendCode:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "ativarCodigoCampanhaAPI(friendCode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -983,13 +935,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500871407.755827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "atualizarLabelCodigo(_:)"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "ativarCodigoCampanhaAPI(friendCode:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MPOfertas_v2/IndiqueViewController.swift"
+            timestampString = "500866945.253094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "IndiqueViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -999,11 +967,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/MeuCupomViewController.swift"
-            timestampString = "500493267.162108"
+            timestampString = "500761156.475615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "updateLabel(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1015,27 +983,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/MeuCupomViewController.swift"
-            timestampString = "500493267.162108"
+            timestampString = "500761156.475615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MPOfertas_v2/MeuCupomViewController.swift"
-            timestampString = "500493267.162108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "updateLabel(_:)"
             landmarkType = "7">
             <Locations>
@@ -1079,11 +1031,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/MeuCupomViewController.swift"
-            timestampString = "500493267.162108"
+            timestampString = "500761156.475615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "recuperarQuantidadeDownloadsAPI(_:)"
             landmarkType = "7">
             <Locations>
@@ -1127,11 +1079,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/MeuCupomViewController.swift"
-            timestampString = "500493267.162108"
+            timestampString = "500761156.475615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "recuperarQuantidadeDownloadsAPI(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1143,11 +1095,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500597890.502998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "shareSocial(_:)"
             landmarkType = "7">
             <Locations>
@@ -1191,12 +1143,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MPOfertas_v2/IndiqueViewController.swift"
-            timestampString = "500563244.659243"
+            timestampString = "500866945.253094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "atualizarLabelCodigo(_:)"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "verificaLogin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

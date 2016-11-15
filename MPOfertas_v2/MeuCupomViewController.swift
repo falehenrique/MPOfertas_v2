@@ -32,6 +32,8 @@ class MeuCupomViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
+        InfoLocais.deletar(chave: "origem")
         
        // let tabArray = self.tabBarController?.tabBar.items as NSArray!
         //let tabItem = tabArray?.object(at: 2) as! UITabBarItem
@@ -39,16 +41,23 @@ class MeuCupomViewController: UIViewController {
         self.tabBarItem.badgeValue = nil;
         
         let codigoAtivacaoUsuario = InfoLocais.lerString(chave: "codigoAtivacaoUsuario")
-        
+
+        setarQuantidadeDownloads(codigoAtivacaoUsuario: codigoAtivacaoUsuario)
+
+        labelCupom.text = InfoLocais.lerString(chave: "meuCupom")
+    
+    }
+    func setarQuantidadeDownloads(codigoAtivacaoUsuario: String) {
         if codigoAtivacaoUsuario.characters.count > 0 {
             recuperarQuantidadeDownloadsAPI(codigoAtivacaoUsuario)
         } else {
             labelQtdDownloads.text = "0"
         }
-        labelCupom.text = InfoLocais.lerString(chave: "meuCupom")
-    
     }
-    
+        
+    @IBAction func pesquisarIndicacoes(_ sender: AnyObject) {
+        setarQuantidadeDownloads(codigoAtivacaoUsuario: InfoLocais.lerString(chave: "codigoAtivacaoUsuario"))
+    }
    
     // POST
     func recuperarQuantidadeDownloadsAPI(_ codigoAtivacaoUsuario:String) {
