@@ -85,8 +85,6 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         let task = urlSession.dataTask(with: request, completionHandler : {(data, response, error) -> Void in
             
             if let error = error {
-                print(error)
-                
                 let alertController = UIAlertController.init(title: "Informação", message: "Não foi possível carregar a lista de produtos", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
@@ -143,8 +141,10 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 return
             }
             
+            var produto = Produto()
+            produtos.append(produto)
             for jsonProduto in jsonProdutos! {
-                let produto = Produto()
+                produto = Produto()
 
                 produto.labelNomeProduto = jsonProduto["titulo_produto"] as! String
                 produto.labelPercentualDesconto = jsonProduto["desconto"] as! Float
@@ -161,11 +161,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 produto.isDestaque = jsonProduto["is_destaque"] as! String
                 
                 produto.textoCupom = jsonProduto["texto_cupom"] as! String
-                
-                //link_imagem
-                //link_produto
-                //link_loja
-                
+            
                 produtos.append(produto)
                 
             }
@@ -215,26 +211,6 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         
         let imageView = UIImageView(image: uiImage)
         imageView.contentMode  = UIViewContentMode.scaleAspectFit
-        
-        
-        /*imageView.contentMode  = UIViewContentMode.scaleAspectFit
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let dicionarioElementos: Dictionary = ["imageView": imageView]
-        
-        let view1ContraintH: Array = NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
-        
-        let view1ContraintV: Array = NSLayoutConstraint.constraints(withVisualFormat: "V:[imageView(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
-        
-       // let elementoPosicaoV = NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[imageView]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dicionarioElementos)
-        
-        imageView.addConstraints(view1ContraintH)
-        imageView.addConstraints(view1ContraintV)*/
-        //imageView.addConstraints(elementoPosicaoV)
-        
-
-         imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute:.width, multiplier: 2.0, constant:150.0))
         
         self.navigationItem.titleView = imageView
     }
@@ -302,9 +278,9 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
      */
     func calculaPontos(_ tamanhoTela: CGFloat) -> Int {
         switch tamanhoTela {
-        case 548.0...568.0:
+        case 548.0...599.0:
             return 5
-        case 600.0...720:
+        case 600.0...730:
             return 6
         case 736.0...1024.0:
             return 7

@@ -16,6 +16,7 @@ import FirebaseInstanceID
 @available(iOS 10.0, *)
 class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate, UITextViewDelegate {
 
+    @IBOutlet weak var viewLogin: UIView!
     let urlAPICampanha = "https://api.mercadopago.com/v0/mgm/tracking/user"
     
     @IBOutlet weak var labelInformativo: UILabel!
@@ -115,11 +116,11 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
      */
     func calculaPontos(_ tamanhoTela: CGFloat) -> Int {
         switch tamanhoTela {
-        case 480.0...519.0:
+        case 480.0...530.0:
             return 210
-        case 548.0...568.0:
+        case 548.0...600.0:
             return 150
-        case 667.0:
+        case 610.0...730.0:
             return 100
         case 736.0...1024.0:
             return 0
@@ -145,13 +146,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         
 
         let objectsToShare = [mensagemCompartilhamento]
-            
         let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
-        //let excludedActivities = [UIActivityType.postToFlickr, UIActivityType.postToWeibo, UIActivityType.message, UIActivityType.mail, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll, UIActivityType.addToReadingList, UIActivityType.postToFlickr, UIActivityType.postToVimeo, UIActivityType.postToTencentWeibo]
-            
-        //activityController.excludedActivityTypes = excludedActivities
-
         present(activityController, animated: true, completion: nil)
     }
     
@@ -164,8 +159,33 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         txtCodigoAtivacao.text = ""
         labelCodigoCompartilhamento.text = ""
 
-        verificaLogin("")
+        verificaLogin()
     }
+    
+    /* verifica se usuário esta logado*/
+    func verificaLogin() {
+        if InfoLocais.lerString(chave: "UserFacebook").isEmpty || FBSDKAccessToken.current() == nil {
+            tratarMensagemLogin(usuarioLogado: false)
+        } else {
+            tratarMensagemLogin(usuarioLogado: true)
+        }
+    }
+    
+    func tratarMensagemLogin(usuarioLogado:Bool){
+        
+        btnFacebook.isHidden = usuarioLogado
+        viewLogin.isHidden = usuarioLogado
+        
+        if usuarioLogado {
+            recuperarCodigoCampanha()
+        } else {
+            let alertController = UIAlertController.init(title: "Atenção", message: "Faça o login para obter seu código promocional.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+    }
+    
     
     func getTokenPush() -> String {
         if let tokenPush = FIRInstanceID.instanceID().token() {
@@ -173,60 +193,6 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         }
         
         return ""
-        
-    }
-    
-    func isLogin() -> Bool{
-    
-        if FBSDKAccessToken.current() != nil {
-            return true
-        }
-        
-        return false
-    }
-    
-    // Atender o POST
-    func atualizarLabelCodigo(_ text: String) {
-
-        let retornoAPI = Util.convertStringToDictionary(text: text)
-
-        if retornoAPI != nil, let codigoUsuario = retornoAPI?["code"] {
-            self.labelCodigoCompartilhamento.text = codigoUsuario as? String
-            
-            InfoLocais.deletar(chave: "codigoAtivacaoUsuario")
-            InfoLocais.gravarString(valor: codigoUsuario as! String, chave: "codigoAtivacaoUsuario")
-            
-        } else {
-            mensagemAlerta("erro", "")
-        }
-    }
-    
-    func verificaLogin (_ text: String){
-    
-        if isLogin() {
-            btnFacebook.isHidden = true
-            labelInformativo.isHidden = true
-
-            btnAtivar.isEnabled = true
-            btnCompartilhar.isEnabled = true
-            txtCodigoAtivacao.isEnabled = true
-            
-            recuperarCodigoCampanha()
-            
-            definirBotaoAtivado("")
-        } else {
-            btnFacebook.isHidden = false
-            labelInformativo.isHidden = false
-            
-            btnAtivar.isEnabled = false
-            btnCompartilhar.isEnabled = false
-            txtCodigoAtivacao.isEnabled = false
-            
-            let alertController = UIAlertController.init(title: "Atenção", message: "Faça o login para obter seu código promocional.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-            
-        }
         
     }
     
@@ -246,16 +212,14 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                     
                     let result = result as? NSDictionary
                     
-                    if  let email = result?["email"] {
-                        UserDefaults.standard.set(email, forKey: "UserFacebook")
+                    DispatchQueue.main.async() { () -> Void in
+                        if  let email = result?["email"] {
+                            InfoLocais.gravarString(valor: email as! String, chave: "UserFacebook")
+                            self.tratarMensagemLogin(true)
+                        } else {
+                            self.tratarMensagemLogin(false)
+                        }
                     }
-                    
-                    if  let userID = result?["id"] {
-                        UserDefaults.standard.set(userID, forKey: "UserID")
-                    }
-                    
-                    // Atualizar a interface                    
-                    self.performSelector(onMainThread: #selector(self.verificaLogin(_:)), with: nil, waitUntilDone: false)
                     
                 }  else {
                     print("Error \(error)")
@@ -275,7 +239,6 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     
     
     func recuperarCodigoCampanha() {
-        //teste
 
         let codigoCampanha = InfoLocais.lerString(chave: "codigoAtivacaoUsuario")
         
@@ -326,15 +289,12 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         //InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
         
         // No caso do POST, iremos definir alguns parâmetros
-        let postParams: [String: AnyObject] = ["email": InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
-                                               "firebaseID": getTokenPush() as AnyObject,
-                                               "friendCode": friendCode as AnyObject,
-                                               "promotion" : 26 as AnyObject,]
-//        print(postParams)
-//        
-//        print(getTokenPush())
-//        print(InfoLocais.lerString(chave: "UserFacebook"))
-//        print(friendCode)
+        let postParams: [String: Any] = ["email": InfoLocais.lerString(chave: "UserFacebook") as String,
+                                               "firebaseID": getTokenPush() as String,
+                                               "friendCode": friendCode as String,
+                                               "promotion" : 26 as String]
+        print(postParams)
+
         
         // Mais alguns parâmetros de configuração
         request.httpMethod = "POST"
@@ -436,12 +396,11 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     }
     
     public func definirBotaoAtivado(_ text: String) {
-        if InfoLocais.lerString(chave: "codigoAtivado") != nil && InfoLocais.lerString(chave: "codigoAtivado") .characters.count > 0 {
+        if  InfoLocais.lerString(chave: "codigoAtivado") .characters.count > 0 {
             btnAtivar.setTitle("Ativado", for: .normal)
             btnAtivar.isEnabled = false
             txtCodigoAtivacao.isEnabled = false
             txtCodigoAtivacao.text = InfoLocais.lerString(chave: "codigoAtivado")
-        //    btnAtivar.tintColor = UIColor.green
         } else {
             btnAtivar.setTitle("Ativar", for: .normal)
             btnAtivar.isEnabled = true
@@ -464,10 +423,10 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         let urlSession = URLSession.shared
         
         // No caso do POST, iremos definir alguns parâmetros
-        let postParams: [String: AnyObject] = ["email": InfoLocais.lerString(chave: "UserFacebook") as AnyObject,
-                                               "firebaseID": getTokenPush() as AnyObject,
-                                               "friendCode": "" as AnyObject,
-                                               "promotion" : 26 as AnyObject,]
+        let postParams: [String: Any] = ["email": InfoLocais.lerString(chave: "UserFacebook") as String,
+                                               "firebaseID": getTokenPush() as String,
+                                               "friendCode": "" as String,
+                                               "promotion" : 26 as String]
         
         
         // Mais alguns parâmetros de configuração
@@ -482,12 +441,6 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         // Data
         let task = urlSession.dataTask(with: request) {
             data, response, error in
-            
-            // Tratar o retorno
-            
-            // Primeiro o código HTTP
-            //  Verificar se retorno do protocolo foi OK
-            //  Response = 200
             
             guard let realResponse = response as? HTTPURLResponse, realResponse.statusCode == 200 else {
                 if let postString = String(data: data!, encoding: String.Encoding.utf8) {
@@ -508,8 +461,19 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             // Ler o JSON de resposta
             if let postString = String(data: data!, encoding: String.Encoding.utf8) {
                 
-                // Atualizar a interface
-                self.performSelector(onMainThread: #selector(self.atualizarLabelCodigo(_:)), with: postString, waitUntilDone: false)
+                DispatchQueue.main.async() { () -> Void in
+                    let retornoAPI = Util.convertStringToDictionary(text: text)
+                    
+                    if retornoAPI != nil, let codigoUsuario = retornoAPI?["code"] {
+                        self.labelCodigoCompartilhamento.text = codigoUsuario as? String
+                        
+                        InfoLocais.deletar(chave: "codigoAtivacaoUsuario")
+                        InfoLocais.gravarString(valor: codigoUsuario as! String, chave: "codigoAtivacaoUsuario")
+                        
+                    } else {
+                        mensagemAlerta("erro", "")
+                    }
+                }
 
             }
             
