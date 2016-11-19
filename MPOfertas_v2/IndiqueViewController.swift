@@ -60,10 +60,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         NotificationCenter.default.addObserver(self, selector: #selector(IndiqueViewController.tecladoUp(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(IndiqueViewController.tecladoDown(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
-        
-        tratarTextoInformativo()
-        // Do any additional setup after loading the view.
-    }
+        }
 
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
@@ -139,10 +136,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             return
         }
         
-        var mensagemCompartilhamento = "Olá! " +
-            "Estou participando da campanha de Black Friday do Mercado Pago.\n"
-            mensagemCompartilhamento.append("Baixe o app, use meu código promocional e me ajude a economizar durante Black Friday :) Meu código é: "+labelCodigoCompartilhamento.text!+".\n"+" Você também receberá um código promocional e poderá ganhar até R$120 de desconto. \n" +
-                "Para baixar o aplicativo e receber descontos, acesse: \n https://itunes.apple.com/us/app/mercado-pago-black-friday/id1174697243?l=pt&ls=1&mt=8 \n Obrigado!")
+        let mensagemCompartilhamento = "Use meu código promocional: "+labelCodigoCompartilhamento.text!+" e me ajude a economizar durante Black Friday. \n" + "Baixe o App Black Friday Mercado Pago para IOS e Android"
         
 
         let objectsToShare = [mensagemCompartilhamento]
@@ -160,6 +154,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         labelCodigoCompartilhamento.text = ""
 
         verificaLogin()
+        tratarTextoInformativo()
     }
     
     /* verifica se usuário esta logado*/
@@ -178,10 +173,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         
         if usuarioLogado {
             recuperarCodigoCampanha()
-        } else {
-            let alertController = UIAlertController.init(title: "Atenção", message: "Faça o login para obter seu código promocional.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            definirBotaoAtivado("")
         }
         
     }
@@ -204,6 +196,10 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
         if error == nil {
+            if result == nil || result.token == nil {
+                self.tratarMensagemLogin(usuarioLogado: false)
+                return
+            }
             let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email"], tokenString: result.token.tokenString, version: nil, httpMethod: "GET")
             
             req!.start(completionHandler: { (connection, result, error) in
@@ -215,9 +211,9 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                     DispatchQueue.main.async() { () -> Void in
                         if  let email = result?["email"] {
                             InfoLocais.gravarString(valor: email as! String, chave: "UserFacebook")
-                            self.tratarMensagemLogin(true)
+                            self.tratarMensagemLogin(usuarioLogado: true)
                         } else {
-                            self.tratarMensagemLogin(false)
+                            self.tratarMensagemLogin(usuarioLogado: false)
                         }
                     }
                     
@@ -228,6 +224,8 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             
         }   else {
             self.mensagemAlerta("erro_facebook", "")
+            self.tratarMensagemLogin(usuarioLogado: false)
+            return
         }
         
     }
@@ -261,7 +259,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             return
         }
         
-        if InfoLocais.lerString(chave: "codigoAtivado") != nil && InfoLocais.lerString(chave: "codigoAtivado") .characters.count > 0 {
+        if InfoLocais.lerString(chave: "codigoAtivado") .characters.count > 0 {
             let alertController = UIAlertController.init(title: "Atenção", message: "Código promocional já informado.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
@@ -292,7 +290,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         let postParams: [String: Any] = ["email": InfoLocais.lerString(chave: "UserFacebook") as String,
                                                "firebaseID": getTokenPush() as String,
                                                "friendCode": friendCode as String,
-                                               "promotion" : 26 as String]
+                                               "promotion" : 26 as Int]
         print(postParams)
 
         
@@ -347,49 +345,63 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     
     func tratarTextoInformativo() {
         
-        let attributedString = NSMutableAttributedString(
-            string: "Compartilhe este código promocional com seus amigos. Quanto mais amigos baixarem o app e ativarem o código, mais desconto você ganha para usar na Black Friday. Regras",
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica",
-                size: 15.0)!,
-                         NSForegroundColorAttributeName:UIColor.white
-                         
-            ])
-
-        attributedString.addAttribute(NSFontAttributeName,
-                                           value: UIFont(
+        var attributedString = NSMutableAttributedString()
+        
+        if InfoLocais.lerString(chave: "UserFacebook").isEmpty {
+            attributedString = NSMutableAttributedString(
+                string: "Realize o login com o Facebook e tenha acesso ao seu código para compartilhar com seus amigos e ganhar descontos para usar na BlackFriday.",
+                attributes: [NSFontAttributeName:UIFont(
+                    name: "Helvetica",
+                    size: 15.0)!,
+                             NSForegroundColorAttributeName:UIColor.white
+                    
+                ])
+            
+        } else {
+            attributedString = NSMutableAttributedString(
+                string: "Compartilhe este código promocional com seus amigos. Quanto mais amigos baixarem o app e ativarem o código, mais desconto você ganha para usar na Black Friday. Regras",
+                attributes: [NSFontAttributeName:UIFont(
+                    name: "Helvetica",
+                    size: 15.0)!,
+                             NSForegroundColorAttributeName:UIColor.white
+                    
+                ])
+            
+            attributedString.addAttribute(NSFontAttributeName,
+                                          value: UIFont(
                                             name: "Helvetica-Bold",
                                             size: 15.0)!,
-                                           range: NSRange(
+                                          range: NSRange(
                                             location: 0,
                                             length: 36 ))
-        
-        attributedString.addAttribute(NSFontAttributeName,
-                                      value: UIFont(
-                                        name: "Helvetica-Bold",
-                                        size: 15.0)!,
-                                      range: NSRange(
-                                        location: 146,
-                                        length: 13 ))
-
-        attributedString.addAttribute(NSFontAttributeName,
-                                      value: UIFont(
-                                        name: "Helvetica-Bold",
-                                        size: 15.0)!,
-                                      range: NSRange(
-                                        location: 160,
-                                        length: 6 ))
-
-        attributedString.addAttribute(NSUnderlineStyleAttributeName,
-                                      value: NSUnderlineStyle.styleSingle.rawValue,
-                                      range: NSRange(
-                                        location: 160,
-                                        length: 6 ))
-        
-        attributedString.addAttribute(NSLinkAttributeName, value: "#regras", range: NSRange(location: 160, length: 6))
+            
+            attributedString.addAttribute(NSFontAttributeName,
+                                          value: UIFont(
+                                            name: "Helvetica-Bold",
+                                            size: 15.0)!,
+                                          range: NSRange(
+                                            location: 146,
+                                            length: 13 ))
+            
+            attributedString.addAttribute(NSFontAttributeName,
+                                          value: UIFont(
+                                            name: "Helvetica-Bold",
+                                            size: 15.0)!,
+                                          range: NSRange(
+                                            location: 160,
+                                            length: 6 ))
+            
+            attributedString.addAttribute(NSUnderlineStyleAttributeName,
+                                          value: NSUnderlineStyle.styleSingle.rawValue,
+                                          range: NSRange(
+                                            location: 160,
+                                            length: 6 ))
+            
+            attributedString.addAttribute(NSLinkAttributeName, value: "#regras", range: NSRange(location: 160, length: 6))
+            
+        }
         
         textoInformativo.attributedText = attributedString
-        
         //textoInformativo.linkTextAttributes = [NSLinkAttributeName :"#regras"]
         
         
@@ -426,8 +438,9 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
         let postParams: [String: Any] = ["email": InfoLocais.lerString(chave: "UserFacebook") as String,
                                                "firebaseID": getTokenPush() as String,
                                                "friendCode": "" as String,
-                                               "promotion" : 26 as String]
+                                               "promotion" : 26 as Int]
         
+        print(postParams)
         
         // Mais alguns parâmetros de configuração
         request.httpMethod = "POST"
@@ -443,6 +456,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             data, response, error in
             
             guard let realResponse = response as? HTTPURLResponse, realResponse.statusCode == 200 else {
+                
                 if let postString = String(data: data!, encoding: String.Encoding.utf8) {
                     let retornoAPI = Util.convertStringToDictionary(text: postString)
                     if retornoAPI != nil {
@@ -455,6 +469,13 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                 } else {
                     self.mensagemAlerta("erro", "")
                 }
+                let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+                loginManager.logOut()
+                InfoLocais.deletar(chave: "UserFacebook")
+                
+                DispatchQueue.main.async() { () -> Void in
+                    self.tratarMensagemLogin(usuarioLogado: false)
+                }
                 return
             }
             
@@ -462,7 +483,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
             if let postString = String(data: data!, encoding: String.Encoding.utf8) {
                 
                 DispatchQueue.main.async() { () -> Void in
-                    let retornoAPI = Util.convertStringToDictionary(text: text)
+                    let retornoAPI = Util.convertStringToDictionary(text: postString)
                     
                     if retornoAPI != nil, let codigoUsuario = retornoAPI?["code"] {
                         self.labelCodigoCompartilhamento.text = codigoUsuario as? String
@@ -471,7 +492,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
                         InfoLocais.gravarString(valor: codigoUsuario as! String, chave: "codigoAtivacaoUsuario")
                         
                     } else {
-                        mensagemAlerta("erro", "")
+                        self.mensagemAlerta("erro", "")
                     }
                 }
 

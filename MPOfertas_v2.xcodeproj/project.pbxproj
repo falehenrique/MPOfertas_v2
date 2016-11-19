@@ -38,13 +38,11 @@
 		4EC3DEA61DD13F7B0086051C /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */; };
 		4EF430051DD24B430066E258 /* InfoLocais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF430041DD24B430066E258 /* InfoLocais.swift */; };
 		4EF430071DD294B20066E258 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF430061DD294B20066E258 /* Reach.swift */; };
-		6758978E4EC04EC4500824EE /* Pods_MPOfertas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35159CB06AD6909E82118F1C /* Pods_MPOfertas.framework */; };
 		9688320B20F3DDB253DC474E /* Pods_MPOfertas_v2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas_v2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2.release.xcconfig"; sourceTree = "<group>"; };
-		35159CB06AD6909E82118F1C /* Pods_MPOfertas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPOfertas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E679A7A1DD503E8008C4CD7 /* HeaderCellProdutos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellProdutos.swift; sourceTree = "<group>"; };
 		4E679AC81DD66820008C4CD7 /* TermosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermosViewController.swift; sourceTree = "<group>"; };
 		4E7BE37E1DD3497D00F161F3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -81,10 +79,8 @@
 		4EC3DEA51DD13F7B0086051C /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		4EF430041DD24B430066E258 /* InfoLocais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLocais.swift; sourceTree = "<group>"; };
 		4EF430061DD294B20066E258 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
-		79D7A0938AFE0751C7FB889F /* Pods-MPOfertas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas/Pods-MPOfertas.release.xcconfig"; sourceTree = "<group>"; };
 		88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPOfertas_v2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B1A4427FD6F8484A21EB72 /* Pods-MPOfertas_v2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas_v2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas_v2/Pods-MPOfertas_v2.debug.xcconfig"; sourceTree = "<group>"; };
-		DF9BA90FDBBFE5586E1425DD /* Pods-MPOfertas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPOfertas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPOfertas/Pods-MPOfertas.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +93,6 @@
 				4E7BE3831DD3497D00F161F3 /* FBSDKCoreKit.framework in Frameworks */,
 				4E7BE3841DD3497D00F161F3 /* FBSDKLoginKit.framework in Frameworks */,
 				9688320B20F3DDB253DC474E /* Pods_MPOfertas_v2.framework in Frameworks */,
-				6758978E4EC04EC4500824EE /* Pods_MPOfertas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +212,6 @@
 			children = (
 				A6B1A4427FD6F8484A21EB72 /* Pods-MPOfertas_v2.debug.xcconfig */,
 				09703A8DC4726FE022862315 /* Pods-MPOfertas_v2.release.xcconfig */,
-				DF9BA90FDBBFE5586E1425DD /* Pods-MPOfertas.debug.xcconfig */,
-				79D7A0938AFE0751C7FB889F /* Pods-MPOfertas.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				88173DEBCE312AF015DB714B /* Pods_MPOfertas_v2.framework */,
-				35159CB06AD6909E82118F1C /* Pods_MPOfertas.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -510,7 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MPOfertas_v2/MPOfertas_v2.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = EC85G4HG9F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,8 +513,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.mercadopago.MPOfertas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "692b38c5-2153-4326-b518-2f2bccfc2fac";
-				PROVISIONING_PROFILE_SPECIFIER = "Development 2";
+				PROVISIONING_PROFILE = "18e5393f-fe63-483b-b890-c7d0c5b140fa";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution - 20-nov";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -544,8 +536,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.mercadopago.MPOfertas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2f53e8c2-cf0b-4414-a80d-dc1d2b33583d";
-				PROVISIONING_PROFILE_SPECIFIER = "Distribution - MPOfertas";
+				PROVISIONING_PROFILE = "d517be4f-58a3-4727-b0eb-f385ceaea404";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution - 20-nov";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -51,7 +51,7 @@ class MeuCupomViewController: UIViewController {
         if codigoAtivacaoUsuario.characters.count > 0 {
             recuperarQuantidadeDownloadsAPI(codigoAtivacaoUsuario)
         } else {
-            labelQtdDownloads.text = "0"
+            labelQtdDownloads.text = "..."
         }
     }
         
@@ -76,6 +76,7 @@ class MeuCupomViewController: UIViewController {
             
             if let error = error {
                 print("Erro na requisição GET: \(error)")
+                return
             }
 
             
@@ -95,10 +96,16 @@ class MeuCupomViewController: UIViewController {
 
             // Ler o JSON de resposta
             if let retornoAPI = String(data: data!, encoding: String.Encoding.utf8) {
-                
-                // Atualizar a interface
-                self.performSelector(onMainThread: #selector(self.updateLabel(_:)), with: retornoAPI, waitUntilDone: false)
-                
+                print(retornoAPI)
+                DispatchQueue.main.async() { () -> Void in
+                    if let retornoAPI = Util.convertStringToDictionary(text: retornoAPI){
+                        self.labelQtdDownloads.text = String(describing: retornoAPI["qtd_download"]!)
+                        
+                        InfoLocais.gravarString(valor: retornoAPI["indicated_code"]! as! String, chave: "codigoAtivado")
+                        
+                    }
+                }
+            
             }
             
         })
@@ -107,11 +114,5 @@ class MeuCupomViewController: UIViewController {
         task.resume()
         
     }
-
-    // Atender o GET
-    func updateLabel(_ text: String) {
-        if let retornoAPI = Util.convertStringToDictionary(text: text){
-            self.labelQtdDownloads.text = String(describing: retornoAPI["qtd_download"]!)
-        }
-    }    
+ 
 }
