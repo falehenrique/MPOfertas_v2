@@ -33,8 +33,13 @@
 	<string>320668098307330</string>
 	<key>FacebookDisplayName</key>
 	<string>MPOfertas</string>
+    
 	<key>FirebaseAppDelegateProxyEnabled</key>
-	<string>NO</string>
+	<string>YES</string>
+
+    <key>FirebaseAutomaticScreenReportingEnabled</key>
+    <string>NO</string>
+    
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -51,7 +56,6 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

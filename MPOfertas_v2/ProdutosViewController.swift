@@ -16,7 +16,9 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     //Endpoint
-    let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos"
+    //let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos"
+    let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos_in"
+    
     
     // Inicializar array de países
     var produtos = [Produto]()
@@ -149,7 +151,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
                 produto.labelNomeProduto = jsonProduto["titulo_produto"] as! String
                 produto.labelPercentualDesconto = jsonProduto["desconto"] as! Float
                 produto.labelPrecoInicial = jsonProduto["preco_inicial"] as! Float
-                produto.labelPrecoFinal = jsonProduto["valor_final"] as! String
+                produto.labelPrecoFinal = jsonProduto["preco"] as! Float
                 produto.labelCupom = jsonProduto["cupom"] as! String
                 
                 produto.imagemLogoLoja = jsonProduto["link_imagem_loja"] as! String
@@ -324,7 +326,7 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.labelPercentualDesconto.text = String(Int(produto.labelPercentualDesconto)) + "% OFF"
         
         cell.labelPrecoInicial.text = "R$ " + String(produto.labelPrecoInicial).replacingOccurrences(of: ".", with: ",")
-        cell.labelPrecoFinal.text = "R$ " + produto.labelPrecoFinal.replacingOccurrences(of: ".", with: ",")
+        cell.labelPrecoFinal.text = "R$ " +  String(produto.labelPrecoFinal).replacingOccurrences(of: ".", with: ",")
         
         //cell.viewProduto.layer.cornerRadius = 2.0
         cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
@@ -336,9 +338,12 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.imagemProduto.layer.cornerRadius = 10.0
         cell.imagemProduto.layer.masksToBounds = true
         cell.imagemLogoLoja.layer.borderColor = UIColor.lightGray.cgColor
-
-        cell.viewProduto.layer.masksToBounds = true
-        cell.viewProduto.layer.cornerRadius = 10.0
+        
+        cell.viewNDestaque.backgroundColor = UIColor.white
+        cell.viewNDestaque.layer.masksToBounds = false
+        cell.viewNDestaque.layer.cornerRadius = 3.0
+        cell.viewNDestaque.layer.shadowOffset = CGSize.zero
+        cell.viewNDestaque.layer.shadowOpacity = 0.5
         
         cell.labelCupom.attributedText = formatarCupom(textoCupom: produto.textoCupom ,cupom: produto.labelCupom)
         
@@ -442,23 +447,24 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         cell.labelPercentualDesconto.text = String(Int(produto.labelPercentualDesconto)) + "% OFF"
         
         cell.labelPrecoInicial.text = "R$ " + String(produto.labelPrecoInicial).replacingOccurrences(of: ".", with: ",")
-        cell.labelPrecoFinal.text = "R$ " + produto.labelPrecoFinal.replacingOccurrences(of: ".", with: ",")
+        cell.labelPrecoFinal.text = "R$ " + String(produto.labelPrecoFinal).replacingOccurrences(of: ".", with: ",")
 
         cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
         cell.imagemProduto.downloadedFrom(link: produto.imagemProduto)
         
         cell.imagemLogoLoja.layer.masksToBounds = true
         cell.imagemLogoLoja.layer.cornerRadius = 10.0
-        
-        cell.imagemProduto.layer.masksToBounds = true
-        cell.imagemProduto.layer.cornerRadius = 10.0
-        
-        cell.viewProduto.layer.masksToBounds = true
-        cell.viewProduto.layer.cornerRadius = 10.0
-        
+                
         cell.imagemLogoLoja.layer.borderColor = UIColor.lightGray.cgColor
         
         cell.labelCupom.attributedText = formatarCupom(textoCupom: produto.textoCupom ,cupom: produto.labelCupom)
+        
+        cell.viewDestaque.backgroundColor = UIColor.white
+        cell.viewDestaque.layer.masksToBounds = false
+        cell.viewDestaque.layer.cornerRadius = 3.0
+        cell.viewDestaque.layer.shadowOffset = CGSize.zero
+        cell.viewDestaque.layer.shadowOpacity = 0.5
+        
         
         return cell
     }

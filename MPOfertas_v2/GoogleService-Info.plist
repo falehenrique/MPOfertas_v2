@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>41098504112-mskqmsn5s1lslib56outd1gdds5rgrp6.apps.googleusercontent.com</string>
+	<string>976045522157-eqrqc10qa06m2s6odb10a89fvpdlcfed.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.41098504112-mskqmsn5s1lslib56outd1gdds5rgrp6</string>
+	<string>com.googleusercontent.apps.976045522157-eqrqc10qa06m2s6odb10a89fvpdlcfed</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAzAgITxnK8Rrua7dHCGwFwVtMNrh_6Bvs</string>
+	<string>AIzaSyDpqpKC9s7QWjJi1V4nVyXRp7IwjZbahcg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>41098504112</string>
+	<string>976045522157</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.br.mercadopago.MPOfertas</string>
 	<key>PROJECT_ID</key>
-	<string>mpofertasfreiras</string>
+	<string>mpofertas-8a1ca</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mpofertasfreiras.appspot.com</string>
+	<string>mpofertas-8a1ca.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:41098504112:ios:bd803ba0a61505e4</string>
+	<string>1:976045522157:ios:bd803ba0a61505e4</string>
 	<key>DATABASE_URL</key>
-	<string>https://mpofertasfreiras.firebaseio.com</string>
+	<string>https://mpofertas-8a1ca.firebaseio.com</string>
 </dict>
 </plist>

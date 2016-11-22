@@ -12,7 +12,7 @@ class DestaqueTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelCupom: UILabel!
     
-    @IBOutlet weak var viewProduto: UIView!
+    @IBOutlet weak var viewDestaque: UIView!
     @IBOutlet weak var imagemLogoLoja: UIImageView!
     @IBOutlet weak var labelNomeProduto: UILabel!
     @IBOutlet weak var labelPercentualDesconto: UILabel!

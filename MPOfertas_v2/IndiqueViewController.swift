@@ -181,6 +181,7 @@ class IndiqueViewController: UIViewController, FBSDKLoginButtonDelegate, UITextF
     
     func getTokenPush() -> String {
         if let tokenPush = FIRInstanceID.instanceID().token() {
+            print("MEU TOKEN====="+tokenPush)
             return tokenPush
         }
         

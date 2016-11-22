@@ -12,7 +12,7 @@ class Produto {
     var labelNomeProduto:String = ""
     var labelPercentualDesconto:Float = 0.0
     var labelPrecoInicial:Float = 0.0
-    var labelPrecoFinal:String =  ""
+    var labelPrecoFinal:Float = 0.0
     var imagemProduto:String = ""
     var isDestaque:String = ""
     var isPreCampanha:String = ""

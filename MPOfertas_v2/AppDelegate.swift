@@ -70,6 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        print("Hooray! I'm registered!")
+        FIRMessaging.messaging().subscribe(toTopic: "BF")
+    }
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
@@ -89,6 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FIRInstanceID.instanceID().setAPNSToken(deviceToken as Data, type: FIRInstanceIDAPNSTokenType.sandbox)
         InfoLocais.deletar(chave: "tokenPush")
+        print("MEU TOKEN \(FIRInstanceID.instanceID().token())")
+        
         if let token = FIRInstanceID.instanceID().token() {
             InfoLocais.gravarString(valor: token, chave: "tokenPush")
             print("MEU TOKEN \(FIRInstanceID.instanceID().token())")
@@ -111,10 +118,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
-        
+
         // Print full message.
         print("%@", userInfo)
         
+        if let title = userInfo["title"]{
+            
+            if  title as! String == "cupom" {
+                InfoLocais.gravarString(valor: userInfo["body"] as! String, chave: "meuCupom")
+                
+                let tabBarController = self.window?.rootViewController as! UITabBarController
+                let tabArray = tabBarController.tabBar.items as NSArray!
+                let tabItem = tabArray?.object(at: 2) as! UITabBarItem
+                tabItem.badgeValue = "!"
+            }
+        }
     }
     // [END receive_message]
     
