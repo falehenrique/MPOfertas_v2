@@ -16,8 +16,8 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     //Endpoint
-    //let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos"
-    let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos_in"
+    let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos"
+    //let produtoURL = "https://api.mercadopago.com/v0/ofertas/app_produtos_in"
     
     
     // Inicializar array de países
@@ -29,11 +29,8 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         NotificationCenter.default.addObserver(self, selector: #selector(ProdutosViewController.networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
         Reach().monitorReachabilityChanges()
         
-        
         addImagemTabBar()
-        
         getProdutos()
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -294,21 +291,21 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let produto = produtos[indexPath.row]
         
+        if indexPath.row == (tableView.indexPathsForVisibleRows?.last)?.row {
+            pararCarregando()
+        }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as! HeaderCellProdutos
             return cell
         }
         
         if produto.isPreCampanha == "N" {
-            if produto.isDestaque == "S"{
+            if produto.isDestaque == "S" {
                 return celulaDestaque(produto: produto, indexPath: indexPath)
             } else {
                 return celulaNDestaque(produto: produto, indexPath: indexPath)
             }
-        }
-        
-        if indexPath.row == (tableView.indexPathsForVisibleRows?.last)?.row {
-            pararCarregando()
         }
         
         return celulaNormal(produto: produto, indexPath: indexPath)
@@ -325,8 +322,21 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         
         cell.labelPercentualDesconto.text = String(Int(produto.labelPercentualDesconto)) + "% OFF"
         
-        cell.labelPrecoInicial.text = "R$ " + String(produto.labelPrecoInicial).replacingOccurrences(of: ".", with: ",")
-        cell.labelPrecoFinal.text = "R$ " +  String(produto.labelPrecoFinal).replacingOccurrences(of: ".", with: ",")
+        let labelPrecoInicial = NSDecimalNumber(value: produto.labelPrecoInicial)
+        let labelPrecoFinal = NSDecimalNumber(value: produto.labelPrecoFinal)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale(identifier: "pt_BR")
+        
+        let labelPrecoInicialFormatado: NSMutableAttributedString =  NSMutableAttributedString(string: numberFormatter.string(from: labelPrecoInicial)!)
+        
+        labelPrecoInicialFormatado.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, labelPrecoInicialFormatado.length))
+        
+        cell.labelPrecoInicial.attributedText = labelPrecoInicialFormatado
+        
+        cell.labelPrecoFinal.text = numberFormatter.string(from: labelPrecoFinal)!
+        
         
         //cell.viewProduto.layer.cornerRadius = 2.0
         cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
@@ -446,9 +456,23 @@ class ProdutosViewController : UIViewController, UITableViewDataSource, UITableV
         
         cell.labelPercentualDesconto.text = String(Int(produto.labelPercentualDesconto)) + "% OFF"
         
-        cell.labelPrecoInicial.text = "R$ " + String(produto.labelPrecoInicial).replacingOccurrences(of: ".", with: ",")
-        cell.labelPrecoFinal.text = "R$ " + String(produto.labelPrecoFinal).replacingOccurrences(of: ".", with: ",")
-
+        
+        
+        let labelPrecoInicial = NSDecimalNumber(value: produto.labelPrecoInicial)
+        let labelPrecoFinal = NSDecimalNumber(value: produto.labelPrecoFinal)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale(identifier: "pt_BR")
+        
+        
+        let labelPrecoInicialFormatado: NSMutableAttributedString =  NSMutableAttributedString(string: numberFormatter.string(from: labelPrecoInicial)!)
+        
+        labelPrecoInicialFormatado.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, labelPrecoInicialFormatado.length))
+        
+        cell.labelPrecoInicial.attributedText = labelPrecoInicialFormatado
+        cell.labelPrecoFinal.text = numberFormatter.string(from: labelPrecoFinal)!
+       
         cell.imagemLogoLoja.downloadedFrom(link: produto.imagemLogoLoja)
         cell.imagemProduto.downloadedFrom(link: produto.imagemProduto)
         
